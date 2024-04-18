@@ -37,7 +37,8 @@ class BinarySearchTest {
         return Stream.of(
                 Arguments.of(new int[]{3,6,8,23,43,56}, 3, 0),
                 Arguments.of(new int[]{3,6,8,23,43,56}, 56, 5),
-                Arguments.of(new int[]{3,6,8,23,43,56}, 23, 3)
+                Arguments.of(new int[]{3,6,8,23,43,56}, 23, 3),
+                Arguments.of(new int[]{3,6,23,23,43,56}, 23, 2)
         );
     }
 

@@ -7,7 +7,7 @@ import java.util.stream.IntStream;
 public class BinarySearch {
     /* The implementation of te algorithm works proper if:
        1. Ascending order.
-          Otherwise, the first index in the array will be always as result of the code.
+          Otherwise, the method returns -1.
        2. If the array contains equal elements the first one index will be found
        3. If the array doesn't contain the element -1 will be return as a result.
      */
