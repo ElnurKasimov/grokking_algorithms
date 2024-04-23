@@ -1,6 +1,5 @@
 package sort;
 
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -51,15 +50,15 @@ class CountingSortTest {
     private static Stream<Arguments> createCountArray () {
         return Stream.of(
                 Arguments.of(new int[]{0,0,0,0,0}, new int[]{5}),
-                Arguments.of(new int[]{1,1,1}, new int[]{0,3}),
-                Arguments.of(new int[]{6,5,4,3,2,1}, new int[]{0,1,1,1,1,1,1}),
-                Arguments.of(new int[]{1,2,3,3,2,1}, new int[]{0,2,2,2})
+                Arguments.of(new int[]{1,1,1}, new int[]{3}),
+                Arguments.of(new int[]{6,5,4,3,2,1}, new int[]{1,1,1,1,1,1}),
+                Arguments.of(new int[]{1,2,3,3,2,1}, new int[]{2,2,2})
 //                Arguments.of(new int[]{-23,-68,-23,0,-68}, new int[]{2,2,1}),
 //                Arguments.of(new int[]{-3,-68,-23,-68,-23}, new int[]{2,2,1,0})
         );
     }
 
-    @ParameterizedTest(name = "{index} test that array {0} has been sorted corectly")
+    @ParameterizedTest(name = "{index} test that array {0} has been sorted correctly")
     @MethodSource
     void sortByCounting (int[] inputArray, int[] expected) {
         assertArrayEquals(expected, CountingSort.sortByCounting(inputArray));
