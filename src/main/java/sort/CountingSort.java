@@ -1,8 +1,6 @@
 package sort;
 
 
-import java.util.Arrays;
-
 // the algorithm works efficiently in case when array contains a lot of equal elements
 // and the range of such elements is significantly less than length of the array
 public class CountingSort {
@@ -31,7 +29,13 @@ public class CountingSort {
     public static int[] createCountArray (int[] array) {
         int min = findMinElement(array);
         int max = findMaxElement(array);
-        int[] countArray = new int[max - min + 1];
+        int countArrayLength;
+        if( min < 0 && max > 0) {
+            countArrayLength = Math.abs(max) + Math.abs(min) + 1;
+        } else {
+            countArrayLength = Math.abs(Math.abs(max) - Math.abs(min)) + 1;
+        }
+        int[] countArray = new int[countArrayLength];
         for (int j : array) {
             countArray[j - min]++;
         }
@@ -46,7 +50,6 @@ public class CountingSort {
                 countArray[i] += countArray[i - 1];
             }
         } else return array;
-        System.out.println(Arrays.toString(countArray));
         int min = findMinElement(array);
         for (int i = array.length - 1; i >= 0; i--) {
             result[countArray[array[i] - min] - 1] = array[i];
