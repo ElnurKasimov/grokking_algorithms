@@ -1,6 +1,5 @@
 package recursion;
 
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -11,10 +10,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class FactorialTest {
 
-    private Factorial factorial = new Factorial();
+    private final Factorial factorial = new Factorial();
     @ParameterizedTest(name = "{index}. test that factorial({0}) is equal {1}")
     @MethodSource("provideDataForFactorialCalculation")
-    void testThatFactorialCalculationIsCorrect (int number, long expected) {
+    void testThatFactorialCalculationIsCorrectly (int number, long expected) {
         assertEquals(expected, factorial.calculateFactorial(number));
     }
 
