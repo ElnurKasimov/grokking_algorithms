@@ -10,10 +10,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CountingSortTest {
 
+    private CountingSort countingSort = new CountingSort();
+
     @ParameterizedTest(name = "{index} test that in array {0} max element {1}")
     @MethodSource
     void findMaxElement (int[] inputArray, int expected) {
-        assertEquals(expected, CountingSort.findMaxElement(inputArray));
+        assertEquals(expected, countingSort.findMaxElement(inputArray));
     }
 
     private static Stream<Arguments> findMaxElement() {
@@ -28,7 +30,7 @@ class CountingSortTest {
     @ParameterizedTest(name = "{index} test that in array {0} min element {1}")
     @MethodSource
     void findMinElement (int[] inputArray, int expected) {
-        assertEquals(expected, CountingSort.findMinElement(inputArray));
+        assertEquals(expected, countingSort.findMinElement(inputArray));
     }
 
     private static Stream<Arguments> findMinElement() {
@@ -44,7 +46,7 @@ class CountingSortTest {
     @ParameterizedTest(name = "{index} test that for array {0} countArray is {1}")
     @MethodSource
     void createCountArray (int[] inputArray, int[] expected) {
-        assertArrayEquals(expected, CountingSort.createCountArray(inputArray));
+        assertArrayEquals(expected, countingSort.createCountArray(inputArray));
     }
 
     private static Stream<Arguments> createCountArray () {
@@ -65,7 +67,7 @@ class CountingSortTest {
     @ParameterizedTest(name = "{index} test that array {0} has been sorted correctly")
     @MethodSource
     void sortByCounting (int[] inputArray, int[] expected) {
-        assertArrayEquals(expected, CountingSort.sortByCounting(inputArray));
+        assertArrayEquals(expected, countingSort.sortByCounting(inputArray));
     }
 
     private static Stream<Arguments> sortByCounting () {

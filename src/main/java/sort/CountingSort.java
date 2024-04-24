@@ -5,7 +5,7 @@ package sort;
 // and the range of such elements is significantly less than length of the array
 public class CountingSort {
 
-    public static int findMaxElement(int[] array) {
+    public int findMaxElement(int[] array) {
         int result = array[0];
         for(int i = 1; i < array.length; i++) {
             if(array[i] > result) {
@@ -15,7 +15,7 @@ public class CountingSort {
         return result;
     }
 
-    public static int findMinElement(int[] array) {
+    public int findMinElement(int[] array) {
         int result = array[0];
         for(int i = 1; i < array.length; i++) {
             if(array[i] < result) {
@@ -26,7 +26,7 @@ public class CountingSort {
     }
 
 
-    public static int[] createCountArray (int[] array) {
+    public int[] createCountArray (int[] array) {
         int min = findMinElement(array);
         int max = findMaxElement(array);
         int countArrayLength;
@@ -42,7 +42,7 @@ public class CountingSort {
         return countArray;
     }
 
-    public static int[] sortByCounting (int[] array) {
+    public int[] sortByCounting (int[] array) {
         int[] result = new int[array.length];
         int[] countArray = createCountArray(array);
         if(countArray.length > 1) {
