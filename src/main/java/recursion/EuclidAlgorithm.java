@@ -1,7 +1,6 @@
 package recursion;
 
 public class EuclidAlgorithm {
-
     public int findGreatestCommonDivisor(int a, int b) {
         int min = Math.min(a, b);
         int max = Math.max(a, b);
