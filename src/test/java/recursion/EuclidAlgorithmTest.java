@@ -15,7 +15,6 @@ class EuclidAlgorithmTest {
     void testThatFindGreatestCommonDivisorWorksCorrectly(int a, int b, int expected) {
         assertEquals(expected, euclidAlgorithm.findGreatestCommonDivisor(a, b));
     }
-
     private static Stream<Arguments> provideDataForFindGreatestCommonDivisor() {
         return Stream.of(
                 Arguments.of(0, 1, 0),
