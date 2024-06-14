@@ -9,7 +9,7 @@ public class QuantityArrayElements {
             return 0;
         }
         if(array.length == 1) {
-            result = array[0];
+            result = 1;
         } else {
             int[] shortArray = Arrays.copyOfRange(array, 1, array.length);
             result = 1 + calculateQuantityArrayElements(shortArray);
