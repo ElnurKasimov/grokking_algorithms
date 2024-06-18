@@ -30,20 +30,51 @@ public class QuickSort {
         return result;
     }
 
-//    public static void main(String[] args) {
-//        List<Integer> list1 = new ArrayList<>();
-//        List<Integer> list2 = Arrays.asList(1);
-//        List<Integer> list3 = Arrays.asList(2,1);
-//        List<Integer> list4 = Arrays.asList(4,2,1);
-//        List<Integer> list5 = Arrays.asList(3,4,2,1);
-//        List<Integer> list6= Arrays.asList(-3, -5, -4);
-//        System.out.println("list1 = " + quickSort(list1));
-//        System.out.println("list2 = " + quickSort(list2));
-//        System.out.println("list3 = " + quickSort(list3));
-//        System.out.println("list4 = " + quickSort(list4));
-//        System.out.println("list5 = " + quickSort(list5));
-//        System.out.println("list6 = " + quickSort(list6));
-//    }
+    //there is an implementation using arrays
+    public int[] quickArraySort(int[] inputArray) {
+        if (inputArray.length <= 1) {
+            return inputArray;
+        }
+        if (inputArray.length == 2) {
+            int[] result = new int[2];
+            if (inputArray[0] <= inputArray[1]) {
+                result[0] = inputArray[0];
+                result[1] = inputArray[1];
+            } else {
+                result[0] = inputArray[1];
+                result[1] = inputArray[0];
 
+            }
+            return result;
+        }
+        int pivot = inputArray.length / 2;
+        int pivotValue = inputArray[pivot];
+        int[] less = new int[inputArray.length - 1];
+        int[] greater = new int[inputArray.length - 1];
+        int lessIndex = 0;
+        int greaterIndex = 0;
+        for (int i = 0; i < inputArray.length; i++) {
+            if (i != pivot) {
+                if (inputArray[i] <= pivotValue) {
+                    less[lessIndex] = inputArray[i];
+                    lessIndex++;
+                } else {
+                    greater[greaterIndex] = inputArray[i];
+                    greaterIndex++;
+                }
+            }
+        }
+        int[] sortedLess = quickArraySort(Arrays.copyOf(less,lessIndex));
+        int[] sortedGreater = quickArraySort(Arrays.copyOf(greater,greaterIndex));
+        int[] result = new int[sortedLess.length + 1 + sortedGreater.length];
+        for (int i = 0; i < sortedLess.length; i++) {
+                result[i] = sortedLess[i];
+            }
+        result[sortedLess.length] = pivotValue;
+        for (int i = sortedLess.length + 1; i < inputArray.length; i++) {
+                result[i] = sortedGreater[i - sortedLess.length - 1];
+            }
+        return result;
+    }
 
 }

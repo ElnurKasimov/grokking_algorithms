@@ -41,4 +41,24 @@ class QuickSortTest {
                 Arguments.of(Arrays.asList(-3, -5, -4), Arrays.asList(-5, -4, -3))
         );
     }
+
+    @ParameterizedTest(name = "{index} test that array {0} has been sorted correctly")
+    @MethodSource
+    void testThatQuickSortWorkCorrectlyWithArray(int[] inputArray, int[] expected) {
+        assertArrayEquals(expected, quickSort.quickArraySort(inputArray));
+    }
+
+    private static Stream<Arguments> testThatQuickSortWorkCorrectlyWithArray () {
+        return Stream.of(
+                Arguments.of(new int[1], new int[1]),
+                Arguments.of(new int[]{2}, new int[]{2}),
+                Arguments.of(new int[]{2,1}, new int[]{1,2}),
+                Arguments.of(new int[]{1,1,1}, new int[]{1,1,1}),
+                Arguments.of(new int[]{2,1,5}, new int[]{1,2,5}),
+                Arguments.of(new int[]{1,2,3,3,2,1}, new int[]{1,1,2,2,3,3}),
+                Arguments.of(new int[]{6, 0, -23}, new int[]{-23,0,6}),
+                Arguments.of(new int[]{-3,-68,-23,-68,-23}, new int[]{-68,-68,-23,-23,-3},
+                Arguments.of(new int[]{-15, 0, 6, 0, -23, 19, 0}, new int[]{-23,-15,0,0,0,6,19}))
+        );
+    }
 }
