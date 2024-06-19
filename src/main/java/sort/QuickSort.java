@@ -11,6 +11,18 @@ public class QuickSort {
         if (inputList.size() <= 1) {
             return inputList;
         }
+        if (inputList.size() == 2) {
+            List<Integer> result = new ArrayList<>();
+            if (inputList.get(0) <= inputList.get(1)) {
+                result.add(inputList.get(0));
+                result.add(inputList.get(1));
+            } else {
+                result.add(inputList.get(1));
+                result.add(inputList.get(0));
+
+            }
+            return result;
+        }
         int pivot = inputList.size() / 2;
         Integer pivotValue = inputList.get(pivot);
         List<Integer> less = new ArrayList<>();
