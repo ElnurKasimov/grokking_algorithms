@@ -8,7 +8,7 @@ import java.util.*;
 
 public class BreadthFirstSearch {
     private static Map<String, Set<String>> acquaintances = new HashMap<>();
-
+    private static Queue<String> searchQueue = new LinkedList<>();
 
     static {
         acquaintances.put("me", Set.of("Abdulla", "Tanya", "Lena", "Pasha"));
@@ -17,23 +17,33 @@ public class BreadthFirstSearch {
         acquaintances.put("Lena", Set.of("Sadovska", "Kadrovichka"));
         acquaintances.put("Pasha", new HashSet<>());
         acquaintances.put("Vita", Set.of("Andrey"));
-        acquaintances.put("Alla", Set.of("Sergey"));
+        acquaintances.put("Alla", Set.of("Sergiy"));
     }
 
-    public static Queue<String> addIntoSearchQueueFirstAcquaintanceLevel(Set<String> names){
-        return new LinkedList<>(names);
+    public static boolean isMangoSeller(String name){
+        return name.charAt(name.length() - 2) == 'e';
+
     }
 
-    public static String findNearestMangoSeller(Queue<String> names) {
-        return "";
-
+    public static String findNearestMangoSeller() {
+        String nameToCheck;
+        while(!searchQueue.isEmpty()) {
+            nameToCheck = searchQueue.poll();
+            if(isMangoSeller(nameToCheck)) {
+                return "The nearest to you mango seller is " + nameToCheck;
+            } else {
+                Set<String> nameAcquaintances = acquaintances.get(nameToCheck);
+                if(nameAcquaintances != null && !nameAcquaintances.isEmpty()) {
+                    searchQueue.addAll(nameAcquaintances);
+                }
+            }
+        }
+        return "There is no mango seller between neither your acquaintances nor their acquaintances";
     }
 
 
     public static void main(String[] args) {
-        Queue<String> searchQueue = addIntoSearchQueueFirstAcquaintanceLevel(acquaintances.get("me"));
-
-
-
+        searchQueue.addAll(acquaintances.get("me"));
+        System.out.println(findNearestMangoSeller());
     }
 }
