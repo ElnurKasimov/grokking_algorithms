@@ -1,7 +1,6 @@
 package sort;
 
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -30,6 +29,7 @@ class QuickSortTest {
 
     private static Stream<Arguments> testThatQuickSortWorkCorrectlyWithList () {
         return Stream.of(
+                Arguments.of(null, null),
                 Arguments.of(new ArrayList<>(), new ArrayList<>()),
                 Arguments.of(Arrays.asList(1), Arrays.asList(1)),
                 Arguments.of(Arrays.asList(2,1), Arrays.asList(1,2)),

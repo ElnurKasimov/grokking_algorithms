@@ -8,6 +8,9 @@ public class QuickSort {
 
     //there is an implementation using Lists not arrays
     public List<Integer> quickSort(List<Integer> inputList) {
+        if(inputList == null) {
+            return null;
+        }
         if (inputList.size() <= 1) {
             return inputList;
         }
